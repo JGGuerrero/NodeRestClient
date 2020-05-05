@@ -25,14 +25,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    const token = localStorage.getItem('id_token');
-    console.log('from login ngOnInit toekn: ', token);
-    if(token != null) {
-      this.loggedIn = true;
-      this.router.navigate(['']);
-    } else {
-      this.loggedIn = false;
-    }
+    // const token = localStorage.getItem('id_token');
+    // console.log('from login ngOnInit toekn: ', token);
+    // if(token != null) {
+    //   this.loggedIn = true;
+    //   this.router.navigate(['']);
+    // } else {
+    //   this.loggedIn = false;
+    // }
   }
 
 

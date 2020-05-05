@@ -7,21 +7,67 @@
     <button mat-raised-button color="primary" (click)="createCar()">Add New Car</button>
   </li>
   <li class="nav-item">
-    <button mat-raised-button color="primary">Add Bike Model 1</button>
+    <button mat-raised-button color="primary" (click)="createClothing()">Add New Clothing</button>
   </li>
   <li class="nav-item">
-    <button mat-raised-button color="primary">Add Bike Model 2</button>
+    <button mat-raised-button color="primary" (click)="showCars()">Get Cars</button>
   </li>
   <li class="nav-item">
-    <button mat-raised-button color="primary">Add Bike Model 3</button>
+    <button mat-raised-button color="primary" (click)="refresh()">Refresh</button>
     </li>
   <li class="nav-item">
-    <button mat-raised-button color="primary">Checkout</button>
+    <button mat-raised-button color="primary" (click)="getClothingByColor()">Pink</button>
   </li>
 </ul>
 
 <div class="contact-grid">
   <div class="gallery-grid">
+    <mat-card class="example-card" *ngFor="let clothing of clothings; let i = index">
+      <mat-card-content>
+        <img class="cover" [src]="clothing.clothing_url" alt="bike">
+        <p>
+          <label for="id">Image URL:</label>
+          <input [(ngModel)]="clothing.clothing_url"  type="text" class="form-control" placeholder="Image" aria-label="Image">
+        </p>
+        <p>
+          <label for="id">ID:</label>
+          <input [(ngModel)]="clothing.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
+        </p>  
+        <p>
+          <label for="make">Type:</label>
+          <input [(ngModel)]="clothing.clothing_type" type="text" class="form-control" placeholder="Make" aria-label="Make">
+        </p> 
+        <p>
+          <label for="model">Color:</label>
+          <input [(ngModel)]="clothing.color" type="text" class="form-control" placeholder="Model" aria-label="Model">
+        </p> 
+        <p>
+          <label for="description">Gender:</label>
+          <input [(ngModel)]="clothing.gender" type="text" class="form-control" placeholder="Description" aria-label="desc"
+            aria-describedby="basic-addon1">
+        </p>
+        <p>
+          <label for="price">Price</label>
+          <input [(ngModel)]="clothing.price" type="text" class="form-control" placeholder="Price" aria-label="price"
+            aria-describedby="basic-addon1">
+        </p>
+        <p>
+          <label for="quantity">Quantity</label>
+          <input [(ngModel)]="clothing.quantity" type="text" class="form-control" placeholder="Quantity" aria-label="qty"
+            aria-describedby="basic-addon1">
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="btn-group pull-right">
+          <!-- <button mat-raised-button color="primary" class="pull-right" (click)="updateCar(car)">Save</button> -->
+          <!-- <button mat-raised-button color="warn" (click)="removeCar(car, i)">Delete</button> -->
+          <button mat-raised-button color="primary" class="pull-right" (click)="updateClothing(clothing)">Save</button>
+          <button mat-raised-button color="warn" (click)="removeClothing(clothing, i)">Delete</button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- BELOW IS FOR CARS  -->
     <mat-card class="example-card" *ngFor="let car of cars; let i = index">
       <mat-card-content>
         <img class="cover" [src]="car.image_url" alt="bike">
@@ -34,16 +80,16 @@
           <input [(ngModel)]="car.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
         </p>  
         <p>
-          <label for="make">Make:</label>
+          <label for="make">Type:</label>
           <input [(ngModel)]="car.make" type="text" class="form-control" placeholder="Make" aria-label="Make">
         </p> 
         <p>
-          <label for="model">Model:</label>
-          <input [(ngModel)]="car.model" type="text" class="form-control" placeholder="Model" aria-label="Model">
+          <label for="model">Color:</label>
+          <input [(ngModel)]="car.color" type="text" class="form-control" placeholder="Model" aria-label="Model">
         </p> 
         <p>
-          <label for="description">Description:</label>
-          <input [(ngModel)]="car.description" type="text" class="form-control" placeholder="Description" aria-label="desc"
+          <label for="description">Gender:</label>
+          <input [(ngModel)]="car.model" type="text" class="form-control" placeholder="Description" aria-label="desc"
             aria-describedby="basic-addon1">
         </p>
         <p>
@@ -52,13 +98,15 @@
             aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="quantity">Quantity</label>
-          <input type="text" class="form-control" placeholder="Quantity" aria-label="qty"
+          <label for="quantity">mileage</label>
+          <input [(ngModel)]="car.mileage" type="text" class="form-control" placeholder="Quantity" aria-label="qty"
             aria-describedby="basic-addon1">
         </p>
       </mat-card-content>
       <mat-card-actions>
         <div class="btn-group pull-right">
+          <!-- <button mat-raised-button color="primary" class="pull-right" (click)="updateCar(car)">Save</button> -->
+          <!-- <button mat-raised-button color="warn" (click)="removeCar(car, i)">Delete</button> -->
           <button mat-raised-button color="primary" class="pull-right" (click)="updateCar(car)">Save</button>
           <button mat-raised-button color="warn" (click)="removeCar(car, i)">Delete</button>
         </div>
